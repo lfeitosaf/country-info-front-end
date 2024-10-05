@@ -8,6 +8,16 @@ export const useCountry = (countryName: string | undefined, countryCode: string 
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
+    interface PopulationData {
+        year: number;
+        value: number;
+    }
+    
+    interface CountryPopulationResponse {
+        country: string;
+        populationCounts: PopulationData[];
+    }
+
     useEffect(() => {
         const fetchCountryFlag = async () => {
             if (!countryName) return;
@@ -28,7 +38,7 @@ export const useCountry = (countryName: string | undefined, countryCode: string 
             setLoading(true);
             setError(null);
             try {
-                const populationResponse = await axios.get(`http://localhost:3001/api/countries/population/${countryName}`);
+                const populationResponse = await axios.get<CountryPopulationResponse>(`http://localhost:3001/api/countries/population/${countryName}`);
                 setCountryPopulation(populationResponse.data);
             } catch (err) {
                 setError("Failed to fetch country data");

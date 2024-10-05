@@ -11,10 +11,10 @@ export const CountryList = (): JSX.Element => {
     }, [loadCountries]);
 
     return(
-        <main className="w-full h-screen flex items-center flex-col">
+        <main className="w-full  flex items-center flex-col pb-[100px] max-lg:pb-[50px]">
             <section className="flex justify-center w-full max-w-screen-xl items-center flex-col max-lg:px-4 gap-4 mt-[100px]">
                 <h1 className="text-white text-xl max-lg:text-center max-lg:text-base">Click on a country to see its information.</h1>
-                <ul className="grid grid-cols-4 gap-2 max-lg:grid-cols-1">
+                <ul className="grid grid-cols-4 gap-2 max-lg:grid-cols-1 w-full">
                     {countryList.length ? countryList.map((country, i)=>( <CountryCard key={i} name={country.name} countryCode={country.countryCode}/>)) : null}
                 </ul>
             </section>
