@@ -54,7 +54,6 @@ export const useCountry = (countryName: string | undefined, countryCode: string 
             try {
                 const borderResponse = await axios.get(`http://localhost:3001/api/countries/border/${countryCode}`);
                 setBorderCountries(borderResponse.data);
-                console.log(borderResponse.data)
             } catch (err) {
                 setError("Failed to fetch country data");
                 console.error(err);

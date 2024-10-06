@@ -11,7 +11,7 @@ export const CountryPage = (): JSX.Element => {
         return <p>Loading...</p>;
     }
 
-    const bordersList = borderCountries.borders
+    const bordersList = borderCountries?.borders ?? []
 
     return (
         <main className="w-full flex items-center flex-col text-white max-lg:px-4 pb-[100px]">
@@ -32,14 +32,14 @@ export const CountryPage = (): JSX.Element => {
             <section className="max-w-screen-xl w-full mt-10">
                 <h2 className="text-lg font-semibold">Countries that border {countryName}:</h2>
                 <ul className="grid grid-cols-4 gap-4 mt-10 max-lg:grid-cols-1">
-                    {bordersList.length ? bordersList.map((country, i)=>( <CountryCard key={i} name={country.commonName} countryCode={country.countryCode}/>))
+                    {bordersList.length ? (bordersList.map((country, i) =>(<CountryCard key={i} name={country.commonName} countryCode={country.countryCode} />)))
                      : <p>This country has no borders.</p>}
                 </ul>
             </section>
 
             <section className="max-w-screen-xl w-full mt-10 bg-[#181818]">
                 <div className="" >
-                {countryPopulation?.populationCounts.length ? (
+                {countryPopulation?.populationCounts?.length ? (
                     <PopulationChart populationData={countryPopulation.populationCounts} />)
                      : <p>No population data available.</p>
                     }

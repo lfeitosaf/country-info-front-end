@@ -1,29 +1,9 @@
 import axios from "axios";
 import { createContext, PropsWithChildren, useState } from "react";
 
-type CountryFlag = string;
-
 type Country = {
     countryCode: string;
     name: string
-}
-
-interface BorderCountry {
-    commonName: string;
-    officialName: string;
-    countryCode: string;
-    region: string;
-    borders: BorderCountry[]
-}
-
-interface Population{
-    year: number;
-    value: number;
-}
-
-interface CountryPopulation{
-    country: string;
-    populationCounts: Population[] 
 }
 
 interface CountryContext {
